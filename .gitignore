@@ -44,7 +44,7 @@ target/
 .gradle/
 build/
 
-# SmartTomcat temporary files
+# IntelliJ SmartTomcat configs
 .smarttomcat/
 
 # Temporary swap files
