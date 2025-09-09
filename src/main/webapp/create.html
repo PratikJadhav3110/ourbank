@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Global Banking - Open Account</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <script>
+        function validateForm(form) {
+            // Check first 3 fields for characters only
+            for (var i = 0; i < 3; i++) {
+                if (!isNaN(form.elements[i].value)) {
+                    alert("This field must contain characters only");
+                    form.elements[i].value = "";
+                    form.elements[i].focus();
+                    return false;
+                }
+            }
+
+            // Confirm password check
+            if (form.password.value !== form.repassword.value) {
+                alert("Confirm password does not match");
+                form.repassword.value = "";
+                form.repassword.focus();
+                return false;
+            }
+
+            // Phone number validation
+            if (isNaN(form.phone.value) || form.phone.value.length != 10) {
+                alert("Phone must be a 10-digit number");
+                form.phone.value = "";
+                form.phone.focus();
+                return false;
+            }
+
+            // Minimum balance validation
+            if (isNaN(form.amount.value) || form.amount.value < 500) {
+                alert("Minimum Balance should be 500/-");
+                form.amount.value = "";
+                form.amount.focus();
+                return false;
+            }
+
+            // Check all fields are filled
+            for (var i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].value.trim() === "") {
+                    alert("Fill out all fields");
+                    form.elements[i].focus();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<div id="top_links">
+
+    <!-- Header -->
+    <div id="header">
+        <h1>OUR - BANK</h1>
+        <h2>ExtraOrdinary Service</h2><br><br><br>
+        <a href="index.html"><img src="images/hmm.gif" height="60" width="60" alt="Home-logo"></a>
+    </div>
+
+    <!-- Navigation -->
+    <div id="navigation">
+        <ul>
+            <li><a href="create.html">NEW ACCOUNT</a></li>
+            <li><a href="jsp/balance1.jsp">BALANCE</a></li>
+            <li><a href="jsp/deposit1.jsp">DEPOSIT</a></li>
+            <li><a href="jsp/withdraw1.jsp">WITHDRAW</a></li>
+            <li><a href="jsp/transfer1.jsp">TRANSFER</a></li>
+            <li><a href="jsp/closeac1.jsp">CLOSE A/C</a></li>
+            <li><a href="jsp/about.jsp">ABOUT US</a></li>
+        </ul>
+    </div>
+
+    <table style="width:897px; background:#FFFFFF; margin:0 auto;">
+        <tr>
+
+            <!-- Services Sidebar -->
+            <td width="300" valign="top" style="border-right:#666 1px dotted;">
+                <div class="services">
+                    <h1>Services</h1>
+                    <ul>
+                        <li><a href="create.html">Instant Account Opening</a></li>
+                        <li>24/7 Customer Support</li>
+                        <li>Financing Products & Advisory Services</li>
+                        <li>Treasury</li>
+                        <li>Asset Management</li>
+                        <li>E-Banking Services: ATM, Mobile & Internet Banking, Card, Loans</li>
+                        <li>Cybersecurity and Fraud Prevention</li>
+                        <li>Cross-Border Banking</li>
+                        <li>Multi-Currency Accounts</li>
+                    </ul>
+                </div>
+            </td>
+
+            <!-- Open Account Form -->
+            <td width="450" valign="top">
+                <div class="welcome" style="border-right:#666 1px dotted;">
+                    <h1>OPEN ACCOUNT FORM</h1><br>
+                    <form name="F1" onsubmit="return validateForm(this)" action="CreateServlet" method="post">
+                        <table cellspacing="5" cellpadding="3" align="center" bgcolor="white">
+                            <tr><td>USER NAME:</td><td><input type="text" name="username"></td></tr>
+                            <tr><td>PASSWORD:</td><td><input type="password" name="password"></td></tr>
+                            <tr><td>RE-PASSWORD:</td><td><input type="password" name="repassword"></td></tr>
+                            <tr><td>AMOUNT:</td><td><input type="text" name="amount"></td></tr>
+                            <tr><td>ADDRESS:</td><td><input type="text" name="address"></td></tr>
+                            <tr><td>PHONE:</td><td><input type="text" name="phone"></td></tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Submit">
+                                    <input type="reset" value="Clear">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+
+            <!-- Welcome to Note -->
+            <td width="299" valign="top">
+                <div class="welcome" style="border-right:#666 1px dotted;">
+                    <h1>Welcome</h1><br>
+                    <center><img src="images/globe_10.gif" alt="business" width="196" height="106"></center><br>
+                    <p>Welcome to Our Bank! Your financial journey starts here. We're dedicated to providing personalized banking solutions and exceptional service. Thank you for choosing us!</p>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+
+    <!-- Footer -->
+    <div id="footer_top">
+        <div id="footer_copyright">
+            <center><img src="images/Business.gif" alt="business" width="250" height="130"></center><br>
+            <p>"Unlock your business potential with our tailored loans! Flexible business loan options designed to fuel your growth."</p>
+            Copyright <strong>&copy; OUR BANK</strong>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
